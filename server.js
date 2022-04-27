@@ -14,13 +14,17 @@ const db = mysql.createConnection(
   {
     host: 'localhost',
     // Your MySQL username,
-    user: 'paquito1981@outloo.com',
+    user: 'paquito1981@outlook.com',
     // Your MySQL password
     password: 'Amoamimia3000',
     database: 'election'
   },
   console.log('Connected to the election database.')
 );
+
+db.query(`SELECT * FROM candidates`, (err, rows) => {
+  console.log(rows);
+});
 
 // Get all candidates
 app.get('/api/candidates', (req, res) => {
@@ -40,7 +44,7 @@ app.get('/api/candidates', (req, res) => {
 
 // Get a single candidate
 app.get('/api/candidate/:id', (req, res) => {
-  const sql = `SELECT * FROM candidates WHERE id = ?`;
+  const sql = `SELECT * FROM candidates WHERE id = 1`;
   const params = [req.params.id];
 
   db.query(sql, params, (err, row) => {
