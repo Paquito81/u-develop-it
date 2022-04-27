@@ -44,7 +44,7 @@ app.get('/api/candidates', (req, res) => {
 
 // Get a single candidate
 app.get('/api/candidate/:id', (req, res) => {
-  const sql = `SELECT * FROM candidates WHERE id = 1`;
+  const sql = `SELECT * FROM candidates WHERE id = ?`;
   const params = [req.params.id];
 
   db.query(sql, params, (err, row) => {
